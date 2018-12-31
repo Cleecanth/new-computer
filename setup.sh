@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#                    _           _        _ _ 
+#                    _           _        _ _
 #  ___  _____  __   (_)_ __  ___| |_ __ _| | |
 # / _ \/ __\ \/ /   | | '_ \/ __| __/ _` | | |
 #| (_) \__ \>  <    | | | | \__ \ || (_| | | |
@@ -9,7 +9,7 @@
 
 echo "I  ❤️  🍎"
 echo "Mac OS Install Setup Script"
-echo "By Nina Zakharenko"
+echo "Fork from Nina Zakharenko"
 echo "Follow me on twitter! https://twitter.com/nnja"
 
 # Some configs reused from:
@@ -162,25 +162,25 @@ echo "Starting brew app install..."
 
 ### Window Management
 # Todo: Try Divvy and spectacles in the future
-brew cask install sizeup  # window manager
+# brew cask install sizeup  # window manager
 
 # Start SizeUp at login
-defaults write com.irradiatedsoftware.SizeUp StartAtLogin -bool true
+# defaults write com.irradiatedsoftware.SizeUp StartAtLogin -bool true
 
 # Don’t show the preferences window on next start
-defaults write com.irradiatedsoftware.SizeUp ShowPrefsOnNextStart -bool false
+# defaults write com.irradiatedsoftware.SizeUp ShowPrefsOnNextStart -bool false
 
 
 ### Developer Tools
-brew cask install iterm2
-brew cask install dash
-brew install ispell
+# brew cask install iterm2
+# brew cask install dash
+# brew install ispell
 
 
 ### Development
-brew cask install docker
-brew install postgresql
-brew install redis
+# brew cask install docker
+# brew install postgresql
+# brew install redis
 
 
 ### Command line tools - install new ones, update others to latest version
@@ -193,7 +193,7 @@ brew install tree
 brew link curl --force
 brew install grep --with-default-names
 brew install trash  # move to osx trash instead of rm
-brew install less
+# brew install less
 
 
 ### Python
@@ -202,52 +202,52 @@ brew install pyenv
 
 
 ### Microcontrollers & Electronics
-brew install avrdude
-brew cask install arduino
+# brew install avrdude
+# brew cask install arduino
 # Manually install teensyduino from:
 # https://www.pjrc.com/teensy/td_download.html
 
 
-### Dev Editors 
+### Dev Editors
 brew cask install visual-studio-code
-brew cask install pycharm
+# brew cask install pycharm
 ### spacemacs github.com/syl20bnr/spacemacs
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-brew tap d12frosted/emacs-plus
-brew install emacs-plus --HEAD --with-natural-title-bars
-brew linkapps emacs-plus
+# git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+# brew tap d12frosted/emacs-plus
+# brew install emacs-plus --HEAD --with-natural-title-bars
+# brew linkapps emacs-plus
 
 
 ### Writing
-brew cask install evernote
+# brew cask install evernote
 brew cask install macdown
-brew cask install notion
+# brew cask install notion
 
 
 ### Conferences, Blogging, Screencasts
-brew cask install deckset
+# brew cask install deckset
 brew cask install ImageOptim  # for optimizing images
-brew cask install screenflow
+# brew cask install screenflow
 
 
 ### Productivity
-brew cask install wavebox
-brew cask install google-chrome
-brew cask install alfred
-brew cask install dropbox
+# brew cask install wavebox
+# brew cask install google-chrome
+# brew cask install alfred
+# brew cask install dropbox
 
-brew cask install timing  # time and project tracker
-brew cask install keycastr  # show key presses on screen (for gifs & screencasts)
-brew cask install betterzip
+# brew cask install timing  # time and project tracker
+# brew cask install keycastr  # show key presses on screen (for gifs & screencasts)
+# brew cask install betterzip
 brew cask install caffeine  # keep computer from sleeping
-brew cask install skitch  # app to annotate screenshots
-brew cask install muzzle
-brew cask install flux
+# brew cask install skitch  # app to annotate screenshots
+# brew cask install muzzle
+# brew cask install flux
 
 
 ### Keyboard & Mouse
-brew cask install karabiner-elements  # remap keys, emacs shortcuts
-brew cask install scroll-reverser  # allow natural scroll for trackpad, not for mouse
+# brew cask install karabiner-elements  # remap keys, emacs shortcuts
+# brew cask install scroll-reverser  # allow natural scroll for trackpad, not for mouse
 
 
 ### Quicklook plugins https://github.com/sindresorhus/quick-look-plugins
@@ -260,10 +260,10 @@ brew cask install quicklook-csv  # preview csvs
 
 
 ### Chat / Video Conference
-brew cask install slack
-brew cask install microsoft-teams
-brew cask install zoomus
-brew cask install signal
+# brew cask install slack
+# brew cask install microsoft-teams
+# brew cask install zoomus
+# brew cask install signal
 
 
 ### Music and Video
@@ -295,40 +295,40 @@ cd ~/Library/Fonts && { curl -O 'https://github.com/Falkor/dotfiles/blob/master/
 ### Installs from Mac App Store
 #############################################
 
-echo "Installing apps from the App Store..."
-
-### find app ids with: mas search "app name"
-brew install mas
-
-### Mas login is currently broken on mojave. See:
-### Login manually for now.
-
-cecho "Need to log in to App Store manually to install apps with mas...." $red
-echo "Opening App Store. Please login."
-open "/Applications/App Store.app"
-echo "Is app store login complete.(y/n)? "
-read response
-if [ "$response" != "${response#[Yy]}" ]
-then
-	mas install 907364780  # Tomato One - Pomodoro timer
-	mas install 485812721  # Tweetdeck
-	mas install 668208984  # GIPHY Capture. The GIF Maker (For recording my screen as gif)
-	mas install 1351639930 # Gifski, convert videos to gifs
-	mas install 414030210  # Limechat, IRC app.
-else
-	cecho "App Store login not complete. Skipping installing App Store Apps" $red
-fi
-
-
-#############################################
-### Install few global python packages
-#############################################
-
-echo "Installing global Python packages..."
-
-pip3 install --upgrade pip
-pip3 install --user pylint
-pip3 install --user flake8
+# echo "Installing apps from the App Store..."
+#
+# ### find app ids with: mas search "app name"
+# brew install mas
+#
+# ### Mas login is currently broken on mojave. See:
+# ### Login manually for now.
+#
+# cecho "Need to log in to App Store manually to install apps with mas...." $red
+# echo "Opening App Store. Please login."
+# open "/Applications/App Store.app"
+# echo "Is app store login complete.(y/n)? "
+# read response
+# if [ "$response" != "${response#[Yy]}" ]
+# then
+# 	mas install 907364780  # Tomato One - Pomodoro timer
+# 	mas install 485812721  # Tweetdeck
+# 	mas install 668208984  # GIPHY Capture. The GIF Maker (For recording my screen as gif)
+# 	mas install 1351639930 # Gifski, convert videos to gifs
+# 	mas install 414030210  # Limechat, IRC app.
+# else
+# 	cecho "App Store login not complete. Skipping installing App Store Apps" $red
+# fi
+#
+#
+# #############################################
+# ### Install few global python packages
+# #############################################
+#
+# echo "Installing global Python packages..."
+#
+# pip3 install --upgrade pip
+# pip3 install --user pylint
+# pip3 install --user flake8
 
 
 #############################################
@@ -345,7 +345,7 @@ osascript -e 'tell application "System Preferences" to quit'
 ##################
 
 # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
-defaults write com.apple.finder QuitMenuItem -bool true
+# defaults write com.apple.finder QuitMenuItem -bool true
 
 # Keep folders on top when sorting by name
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
@@ -360,20 +360,27 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 # Finder: show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
+# Finder: show hidden dot files
+defaults write com.apple.Finder AppleShowAllFiles true
+
 # Remove the auto-hiding Dock delay
-defaults write com.apple.dock autohide-delay -float 0
+# defaults write com.apple.dock autohide-delay -float 0
 
 # Automatically hide and show the Dock
-defaults write com.apple.dock autohide -bool true
+# defaults write com.apple.dock autohide -bool true
 
-# Only Show Open Applications In The Dock  
-defaults write com.apple.dock static-only -bool true
+# Only Show Open Applications In The Dock
+# defaults write com.apple.dock static-only -bool true
+
+# Add Spaces to dock
+defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}'
+defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}'
 
 # Display full POSIX path as Finder window title
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
 # Disable the warning when changing a file extension
-defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+# defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 # Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
@@ -385,31 +392,31 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
-# Use list view in all Finder windows by default
+# Use column view in all Finder windows by default
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
-defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 
 # Minimize windows into their application’s icon
-defaults write com.apple.dock minimize-to-application -bool true
+# defaults write com.apple.dock minimize-to-application -bool true
 
 # Automatically hide and show the Dock
-defaults write com.apple.dock autohide -bool true
+# defaults write com.apple.dock autohide -bool true
 
 # Don’t show recent applications in Dock
 #    defaults write com.apple.dock show-recents -bool false
 
 # Menu bar: hide the Time Machine, User icons, but show the volume Icon.
-for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
-	defaults write "${domain}" dontAutoLoad -array \
-		"/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
-		"/System/Library/CoreServices/Menu Extras/User.menu"
-done
-defaults write com.apple.systemuiserver menuExtras -array \
-	"/System/Library/CoreServices/Menu Extras/Volume.menu" \
-	"/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
-	"/System/Library/CoreServices/Menu Extras/AirPort.menu" \
-	"/System/Library/CoreServices/Menu Extras/Battery.menu" \
-	"/System/Library/CoreServices/Menu Extras/Clock.menu"
+# for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
+# 	defaults write "${domain}" dontAutoLoad -array \
+# 		"/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
+# 		"/System/Library/CoreServices/Menu Extras/User.menu"
+# done
+# defaults write com.apple.systemuiserver menuExtras -array \
+# 	"/System/Library/CoreServices/Menu Extras/Volume.menu" \
+# 	"/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
+# 	"/System/Library/CoreServices/Menu Extras/AirPort.menu" \
+# 	"/System/Library/CoreServices/Menu Extras/Battery.menu" \
+# 	"/System/Library/CoreServices/Menu Extras/Clock.menu"
 
 ##################
 ### Text Editing / Keyboards
@@ -420,10 +427,10 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 # Disable auto-correct
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+# defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 # Use function F1, F, etc keys as standard function keys
-defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
+# defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
 
 
 ###############################################################################
@@ -431,8 +438,8 @@ defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
 ###############################################################################
 
 # Require password immediately after sleep or screen saver begins"
-defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
+# defaults write com.apple.screensaver askForPassword -int 1
+# defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # Save screenshots to the desktop
 defaults write com.apple.screencapture location -string "$HOME/Desktop"
@@ -479,12 +486,12 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 # Disable force click and haptic feedback
-defaults write ~/Library/Preferences/com.apple.AppleMultitouchTrackpad.plist ForceSuppressed -bool true
+# defaults write ~/Library/Preferences/com.apple.AppleMultitouchTrackpad.plist ForceSuppressed -bool true
 
 # Mouse settings
-defaults write com.apple.driver.AppleBluetoothMultitouch.mouse.plist MouseOneFingerDoubleTapGesture -int 0
-defaults write com.apple.driver.AppleBluetoothMultitouch.mouse.plist MouseTwoFingerDoubleTapGesture -int 3
-defaults write com.apple.driver.AppleBluetoothMultitouch.mouse.plist MouseTwoFingerHorizSwipeGesture -int 2
+# defaults write com.apple.driver.AppleBluetoothMultitouch.mouse.plist MouseOneFingerDoubleTapGesture -int 0
+# defaults write com.apple.driver.AppleBluetoothMultitouch.mouse.plist MouseTwoFingerDoubleTapGesture -int 3
+# defaults write com.apple.driver.AppleBluetoothMultitouch.mouse.plist MouseTwoFingerHorizSwipeGesture -int 2
 defaults write ~/Library/Preferences/.GlobalPreferences.plist com.apple.mouse.scaling -float 3
 defaults write ~/Library/Preferences/.GlobalPreferences.plist com.apple.swipescrolldirection -boolean NO
 
@@ -514,15 +521,15 @@ defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 ###############################################################################
 
 # Disable the all too sensitive backswipe on trackpads
-defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
+# defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
 
 
 #############################################
 ### Install dotfiles repo, run link script
 #############################################
-# TODO: 
+# TODO:
 # clean up my personal repo to make it public
-# dotfiles for vs code, emacs, gitconfig, oh my zsh, etc. 
+# dotfiles for vs code, emacs, gitconfig, oh my zsh, etc.
 # git clone git@github.com:nnja/dotfiles.git
 # cd dotfiles
 # fetch submodules for oh-my-zsh
