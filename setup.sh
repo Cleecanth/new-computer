@@ -9,8 +9,8 @@
 
 echo "I  ❤️  🍎"
 echo "Mac OS Install Setup Script"
-echo "Fork from Nina Zakharenko"
-echo "Follow me on twitter! https://twitter.com/nnja"
+echo "Forked from Nina Zakharenko"
+echo "Follow her on twitter! https://twitter.com/nnja"
 
 # Some configs reused from:
 # https://github.com/ruyadorno/installme-osx/
@@ -350,6 +350,10 @@ osascript -e 'tell application "System Preferences" to quit'
 # Keep folders on top when sorting by name
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
+# Use column view in all Finder windows by default
+# Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
+defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
@@ -392,15 +396,8 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
-# Use column view in all Finder windows by default
-# Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
-defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
-
 # Minimize windows into their application’s icon
 # defaults write com.apple.dock minimize-to-application -bool true
-
-# Automatically hide and show the Dock
-# defaults write com.apple.dock autohide -bool true
 
 # Don’t show recent applications in Dock
 #    defaults write com.apple.dock show-recents -bool false
@@ -476,7 +473,7 @@ killall mds
 
 # Disable “natural” (Lion-style) scrolling
 # Uncomment if you don't use scroll reverser
-# defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
 # Stop iTunes from responding to the keyboard media keys
 #launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
