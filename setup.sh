@@ -67,6 +67,7 @@ if ! $CONTINUE; then
   exit
 fi
 
+
 # Here we go.. ask for the administrator password upfront and run a
 # keep-alive to update existing `sudo` time stamp until script has finished
 sudo -v
@@ -88,7 +89,7 @@ fi
 # Latest brew, install brew cask
 brew upgrade
 brew update
-brew tap caskroom/cask
+brew tap homebrew/cask-cask
 
 
 #############################################
@@ -182,6 +183,11 @@ echo "Starting brew app install..."
 # brew install postgresql
 # brew install redis
 
+### Node and NVM
+mkdir ~/.nvm
+touch ~/.bash_profile
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash # latest nvm
+nvm install node # latest node
 
 ### Command line tools - install new ones, update others to latest version
 brew install git  # upgrade to latest
@@ -191,7 +197,6 @@ brew install zsh # zshell
 brew install tmux
 brew install tree
 brew link curl --force
-brew install grep --with-default-names
 brew install trash  # move to osx trash instead of rm
 # brew install less
 
@@ -221,16 +226,19 @@ brew cask install visual-studio-code
 ### Writing
 # brew cask install evernote
 brew cask install macdown
-# brew cask install notion
+brew cask install typora
+brew cask install notion
 
 
 ### Conferences, Blogging, Screencasts
 # brew cask install deckset
 brew cask install ImageOptim  # for optimizing images
+brew cask install imagealpha # for further optimizing pngs
 # brew cask install screenflow
 
 
 ### Productivity
+brew cask install bartender # menubar manager
 # brew cask install wavebox
 # brew cask install google-chrome
 # brew cask install alfred
@@ -238,7 +246,7 @@ brew cask install ImageOptim  # for optimizing images
 
 # brew cask install timing  # time and project tracker
 # brew cask install keycastr  # show key presses on screen (for gifs & screencasts)
-# brew cask install betterzip
+brew cask install betterzip
 brew cask install caffeine  # keep computer from sleeping
 # brew cask install skitch  # app to annotate screenshots
 # brew cask install muzzle
@@ -247,16 +255,19 @@ brew cask install caffeine  # keep computer from sleeping
 
 ### Keyboard & Mouse
 # brew cask install karabiner-elements  # remap keys, emacs shortcuts
-# brew cask install scroll-reverser  # allow natural scroll for trackpad, not for mouse
+brew cask install bettertouchtool # improved touch controls
 
 
 ### Quicklook plugins https://github.com/sindresorhus/quick-look-plugins
 brew cask install qlcolorcode # syntax highlighting in preview
 brew cask install qlstephen  # preview plaintext files without extension
 brew cask install qlmarkdown  # preview markdown files
+brew cask install qlImageSize # see the image dimensions + webp
 brew cask install quicklook-json  # preview json files
 brew cask install epubquicklook  # preview epubs, make nice icons
 brew cask install quicklook-csv  # preview csvs
+brew cask install quicklookase # preview adobe color palettes
+brew cask install quicklook-pat # preview photoshop pattern files
 
 
 ### Chat / Video Conference
@@ -281,7 +292,7 @@ brew cleanup
 
 echo "Installing fonts..."
 
-brew tap caskroom/fonts
+brew tap homebrew/cask-fonts
 
 ### programming fonts
 brew cask install font-fira-mono-for-powerline
@@ -339,6 +350,26 @@ cd ~/Library/Fonts && { curl -O 'https://github.com/Falkor/dotfiles/blob/master/
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
 
+# Hot corners
+# Possible values:
+#  0: no-op
+#  2: Mission Control
+#  3: Show application windows
+#  4: Desktop
+#  5: Start screen saver
+#  6: Disable screen saver
+#  7: Dashboard
+# 10: Put display to sleep
+# 11: Launchpad
+# 12: Notification Center
+# 13: Lock Screen
+# Top left screen corner → Desktop
+defaults write com.apple.dock wvous-tl-corner -int 4
+defaults write com.apple.dock wvous-tl-modifier -int 0
+# defaults write com.apple.dock wvous-tr-corner -int 4
+# defaults write com.apple.dock wvous-tr-modifier -int 0
+# defaults write com.apple.dock wvous-bl-corner -int 5
+# defaults write com.apple.dock wvous-bl-modifier -int 0
 
 ##################
 ### Finder, Dock, & Menu Items
@@ -438,8 +469,8 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 # defaults write com.apple.screensaver askForPassword -int 1
 # defaults write com.apple.screensaver askForPasswordDelay -int 0
 
-# Save screenshots to the desktop
-defaults write com.apple.screencapture location -string "$HOME/Desktop"
+# Save screenshots to pictures/screenshots
+defaults write com.apple.screencapture location -string "$HOME/Pictures/Screenshots"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
@@ -483,7 +514,7 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 # Disable force click and haptic feedback
-# defaults write ~/Library/Preferences/com.apple.AppleMultitouchTrackpad.plist ForceSuppressed -bool true
+defaults write ~/Library/Preferences/com.apple.AppleMultitouchTrackpad.plist ForceSuppressed -bool true
 
 # Mouse settings
 # defaults write com.apple.driver.AppleBluetoothMultitouch.mouse.plist MouseOneFingerDoubleTapGesture -int 0
@@ -504,7 +535,7 @@ defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
 defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
 
 # Install System data files & security updates
-defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
+# defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 
 ###############################################################################
 # Photos                                                                      #
