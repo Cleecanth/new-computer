@@ -228,13 +228,14 @@ brew cask install github
 
 ### Writing
 # brew cask install evernote
-brew cask install macdown
+# brew cask install macdown
 brew cask install typora
 brew cask install notion
 
 
 ### Conferences, Blogging, Screencasts
 # brew cask install deckset
+brew cask install adobe-creative-cloud 
 brew cask install ImageOptim  # for optimizing images
 brew cask install imagealpha # for further optimizing pngs
 # brew cask install screenflow
