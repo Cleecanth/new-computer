@@ -97,6 +97,7 @@ brew tap homebrew/cask-cask
 ### See: https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
 #############################################
 
+
 echo "Generating ssh keys, adding to ssh-agent..."
 read -p 'Input email for ssh key: ' useremail
 
@@ -215,6 +216,8 @@ brew install pyenv
 
 ### Dev Editors
 brew cask install visual-studio-code
+brew cask install sourcetree
+brew cask install github
 # brew cask install pycharm
 ### spacemacs github.com/syl20bnr/spacemacs
 # git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
@@ -555,6 +558,21 @@ defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 #############################################
 ### Install dotfiles repo, run link script
 #############################################
+echo "Customizing bash"
+
+cat <<EOT >> ~/.bash_profile
+gb() {
+  echo -n '(' && git branch 2>/dev/null | grep '^*' | colrm 1 2 | tr -d '\n' && echo  -n ')'
+}
+git_branch() {
+  gb | sed 's/()//'
+}
+
+PS1='\e[32m\u \e[36m@ \w \e[34m$(git_branch)\n\e[0m$ '
+export PATH=~/.npm-global/bin:$PATH
+EOT
+
+
 # TODO:
 # clean up my personal repo to make it public
 # dotfiles for vs code, emacs, gitconfig, oh my zsh, etc.
